@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.domain.Page;
@@ -79,6 +80,11 @@ public class EstudanteService {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND)
 				.body("Estudante não encontrado");
 
+	}
+
+	public List<Estudante> buscarEstudantesQueNaoAvaliaram() {
+		return estudanteRepository
+				.findByAvaliacaoCursosEstudanteIsNull();
 	}
 
 }
